@@ -14,19 +14,19 @@ const BarCodeComponent = () => {
     })()
   }
 
-  // Request Camera Permission
+  //spørg telefonen om lov til at bruge kameraet
   useEffect(() => {
     askForCameraPermission();
   }, []);
 
-  // What happens when we scan the bar code
+  // Her er hvad der skal ske når stregkoden er scannet
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
     setText(data)
     console.log('Type: ' + type + '\nData: ' + data)
   };
 
-  // Check permissions and return the screens
+  // Her spørger man fpr permission, eller afviser
   if (hasPermission === null) {
     return (
       <View style={styles.container}>
@@ -41,7 +41,7 @@ const BarCodeComponent = () => {
       </View>)
   }
 
-  // Return the View
+  // Return til view
   return (
     <View style={styles.container}>
       <View style={styles.barcodebox}>
